@@ -1,14 +1,9 @@
 import axios from "axios";
 
 // Configurar baseURL baseado no ambiente
-// Em desenvolvimento, usa localhost
-// Em produção na Vercel, usa a mesma origem
-const baseURL =
-  process.env.NODE_ENV === "development"
-    ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
-    : typeof window !== "undefined"
-    ? window.location.origin
-    : "";
+const baseURL = typeof window !== "undefined" 
+  ? (process.env.NODE_ENV === "development" ? "" : window.location.origin)
+  : "";
 
 export const api = axios.create({
   baseURL,
@@ -33,4 +28,3 @@ api.interceptors.response.use(
     }
   }
 );
-

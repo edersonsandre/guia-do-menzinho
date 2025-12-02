@@ -1,9 +1,14 @@
 import axios from "axios";
 
 // Configurar baseURL baseado no ambiente
-// Em desenvolvimento, usa o proxy do Vite (relativo)
-// Em produção, usa a mesma origem
-const baseURL = import.meta.env.MODE === "development" ? "" : window.location.origin;
+// Em desenvolvimento, usa localhost
+// Em produção na Vercel, usa a mesma origem
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+    : typeof window !== "undefined"
+    ? window.location.origin
+    : "";
 
 export const api = axios.create({
   baseURL,

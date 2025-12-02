@@ -288,7 +288,7 @@ export default function Quiz() {
             <div className="space-y-4">
               <div className={`p-4 bg-white/5 rounded-lg border-l-4 ${showArab ? 'border-purple-500' : 'border-primary'}`}>
                 <p className="text-muted-foreground italic text-lg">
-                  "{result.description}"
+                  &quot;{result.description}&quot;
                 </p>
                 <p className={`text-right text-sm font-bold mt-2 ${showArab ? 'text-purple-500' : 'text-primary'}`}>- O Menzinho</p>
               </div>
@@ -300,7 +300,7 @@ export default function Quiz() {
                 <Link href={`/perfume/${result.id}`}>
                   <div className="flex items-center gap-3 cursor-pointer hover:bg-white/5 p-2 rounded transition-colors">
                     <div className="w-12 h-12 bg-white rounded overflow-hidden flex-shrink-0">
-                      <img src={result.image} className="w-full h-full object-cover opacity-80" />
+                      <img src={result.image} alt={result.name} className="w-full h-full object-cover opacity-80" />
                     </div>
                     <div>
                       <p className="font-bold text-sm">{result.name}</p>

@@ -86,7 +86,7 @@ export default function Calculator() {
       <div className="container max-w-2xl mx-auto py-12 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-serif font-bold text-white mb-4">Quantas Borrifadas?</h1>
-          <p className="text-muted-foreground">A ciência exata para não ser o "tio do perfume" no escritório.</p>
+          <p className="text-muted-foreground">A ciência exata para não ser o &quot;tio do perfume&quot; no escritório.</p>
         </div>
 
         {!result ? (
@@ -166,7 +166,7 @@ export default function Calculator() {
                   {result.sprays}
                 </div>
                 <p className="text-xl text-white font-medium italic">
-                  "{result.message}"
+                  &quot;{result.message}&quot;
                 </p>
               </CardContent>
             </Card>

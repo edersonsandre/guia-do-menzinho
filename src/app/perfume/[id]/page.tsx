@@ -24,21 +24,11 @@ export default function PerfumeDetail() {
     economize: getRandomPhrase('economize'),
     similaridade: getRandomPhrase('similaridade'),
     cta: getRandomPhrase('cta')
-  }), [perfume?.id]);
-
-  if (!perfume) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Perfume não encontrado</h2>
-          <Button variant="outline" onClick={() => router.push('/home')}>Voltar para Home</Button>
-        </div>
-      </div>
-    );
-  }
+  }), []);
 
   // Dados dinâmicos baseados na seleção
   const currentData = useMemo(() => {
+    if (!perfume) return null;
     if (selectedVersion === 'br') {
       return {
         name: perfume.cloneName || 'Opção Nacional',
@@ -71,6 +61,21 @@ export default function PerfumeDetail() {
       buyLink: null
     };
   }, [selectedVersion, perfume, phrases]);
+
+  if (!perfume) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Perfume não encontrado</h2>
+          <Button variant="outline" onClick={() => router.push('/home')}>Voltar para Home</Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentData) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
@@ -242,7 +247,7 @@ export default function PerfumeDetail() {
                     animate={{ opacity: 1 }}
                     className="text-muted-foreground leading-relaxed text-lg"
                   >
-                    "{currentData.description}"
+                    &quot;{currentData.description}&quot;
                   </motion.p>
                   
                   <div className="flex flex-wrap gap-2 mt-4">
